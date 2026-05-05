@@ -14,7 +14,6 @@ from datetime import datetime, timezone, timedelta
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -51,24 +50,8 @@ def create_driver():
         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
     )
 
-    # Pokušaj pronaći Chrome/Chromium
-    for path in [
-        "/usr/bin/google-chrome-stable",
-        "/usr/bin/google-chrome",
-        "/usr/bin/chromium-browser",
-        "/usr/bin/chromium",
-    ]:
-        if os.path.exists(path):
-            options.binary_location = path
-            break
-
-    try:
-        from webdriver_manager.chrome import ChromeDriverManager
-        service = Service(ChromeDriverManager().install())
-    except Exception:
-        service = Service()
-
-    return webdriver.Chrome(service=service, options=options)
+    # Chrome je već instaliran na GitHub Actions ubuntu-latest runneru
+    return webdriver.Chrome(options=options)
 
 
 def accept_cookies(driver):
