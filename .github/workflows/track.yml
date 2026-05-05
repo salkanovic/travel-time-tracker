@@ -2,14 +2,9 @@ name: Travel Time Tracker
 
 on:
   schedule:
-    # HR vrijeme = UTC+2 (CEST ljeto)
-    # 7:00-7:59 HR (= 5:00-5:59 UTC) → svaku minutu
     - cron: '* 5 * * 1-5'
-    # 8:00-14:59 HR (= 6:00-12:59 UTC) → svake 3 min
     - cron: '*/3 6-12 * * 1-5'
-    # 15:00-15:59 HR (= 13:00-13:59 UTC) → svaku minutu
     - cron: '* 13 * * 1-5'
-    # 16:00-17:00 HR (= 14:00-15:00 UTC) → svake 3 min
     - cron: '*/3 14-15 * * 1-5'
 
   workflow_dispatch:
