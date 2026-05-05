@@ -57,4 +57,4 @@ jobs:
           curl -T travel_log.txt \
             --ftp-create-dirs \
             -u "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASS }}" \
-            "ftp://${{ secrets.FTP_HOST }}/public_html/travel/data/travel_log.txt"
+            "ftp://92.113.18.42/public_html/maps/data/travel_log.txt"
