@@ -50,13 +50,3 @@ jobs:
             echo "Retry $i..."
             sleep 5
           done
-
-      - name: Upload log to Hostinger via SFTP
-        run: |
-          sudo apt-get install -y -qq sshpass > /dev/null 2>&1
-          sshpass -p "${{ secrets.FTP_PASS }}" \
-            scp -P 65002 \
-            -o StrictHostKeyChecking=no \
-            -o ConnectTimeout=15 \
-            travel_log.txt \
-            "${{ secrets.FTP_USER }}@92.113.18.42:/home/u117856069/public_html/maps/data/travel_log.txt"
