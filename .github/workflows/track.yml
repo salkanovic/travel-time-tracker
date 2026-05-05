@@ -54,6 +54,9 @@ jobs:
       - name: Upload log to Hostinger via FTP
         run: |
           curl -T travel_log.txt \
+            --ftp-pasv \
             --ftp-create-dirs \
+            --connect-timeout 15 \
+            --max-time 30 \
             -u "${{ secrets.FTP_USER }}:${{ secrets.FTP_PASS }}" \
             "ftp://92.113.18.42/public_html/maps/data/travel_log.txt"
