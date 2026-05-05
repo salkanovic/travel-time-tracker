@@ -21,18 +21,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # ─── KONFIGURACIJA ────────────────────────────────────────────────────────────
 
-MAPS_URL = (
-    "https://www.google.com/maps/dir/"
-    "Faculty+of+Humanities+and+Social+Sciences,+Sveu%C4%8Dili%C5%A1na+Av+4,+51000,+Rijeka,+Croatia/"
-    "Ul.+Bra%C4%87e+Ba%C4%8Di%C4%87+3,+51000,+Rijeka,+Croatia/"
-    "@45.3247616,14.4737703,773m/data=!3m1!1e3!4m24!4m23"
-    "!1m15!1m1!1s0x4764a1abbca39755:0xa12a1f41eacebcfc"
-    "!2m2!1d14.4656327!2d45.3283057"
-    "!3m4!1m2!1d14.4720073!2d45.3259306!3s0x4764a1ad718ab20b:0x83d0e720ce9ae14"
-    "!3m4!1m2!1d14.4756337!2d45.3252117!3s0x4764a1b2e3c5dec9:0x477bcdde551f04ab"
-    "!1m5!1m1!1s0x4764a6f0519f9b79:0xacfbcabd53c07d9e"
-    "!2m2!1d14.3789512!2d45.3476364!3e0?entry=ttu"
-)
+# URL se čita iz environment varijable (postavlja se kao GitHub Secret)
+MAPS_URL = os.environ.get("MAPS_URL", "")
+
+if not MAPS_URL:
+    print("[GREŠKA] MAPS_URL environment varijabla nije postavljena!", file=sys.stderr)
+    print("Postavi je kao GitHub Secret (Settings → Secrets → Actions).", file=sys.stderr)
+    sys.exit(1)
 
 LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "travel_log.txt")
 
