@@ -11,8 +11,7 @@ on:
     - cron: '* 13 * * 1-5'
     # 16:00-17:00 HR (= 14:00-15:00 UTC) → svake 3 min
     - cron: '*/3 14-15 * * 1-5'
-  
-  # Omogući ručno pokretanje za testiranje
+
   workflow_dispatch:
 
 jobs:
@@ -21,7 +20,7 @@ jobs:
     concurrency:
       group: travel-tracker
       cancel-in-progress: false
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
